@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desjuridicando IA | Masterclass com Prof. Edu Simão</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00D1FF;
+            --secondary: #FFD700;
+            --bg-dark: #0A0F14;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --text-main: #E2E8F0;
+            --text-dim: #94A3B8;
+            --accent-gradient: linear-gradient(135deg, #00D1FF 0%, #0070FF 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 100px 0 60px;
+            text-align: center;
+            background: radial-gradient(circle at top, rgba(0, 209, 255, 0.1) 0%, transparent 70%);
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            line-height: 1.1;
+            margin-bottom: 24px;
+            color: #fff;
+        }
+
+        .hero h1 span {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-dim);
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+
+        .hero-image {
+            width: 100%;
+            max-width: 900px;
+            border-radius: 20px;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.5), 0 0 40px rgba(0, 209, 255, 0.2);
+            margin-bottom: 60px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* Buttons */
+        .cta-button {
+            display: inline-block;
+            background: var(--accent-gradient);
+            color: #000;
+            padding: 20px 40px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            box-shadow: 0 20px 40px rgba(0, 209, 255, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 30px 60px rgba(0, 209, 255, 0.5);
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 40px;
+            border-radius: 20px;
+            transition: border 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: var(--primary);
+        }
+
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        /* Modules */
+        .modules-section {
+            background: #000;
+        }
+
+        .module-list {
+            counter-reset: section;
+        }
+
+        .module-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 30px;
+            background: rgba(255,255,255,0.02);
+            padding: 30px;
+            border-radius: 15px;
+        }
+
+        .module-item::before {
+            counter-increment: section;
+            content: "0" counter(section);
+            font-family: 'Outfit';
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-right: 30px;
+            opacity: 0.5;
+        }
+
+        /* Pricing Area */
+        .pricing-box {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--primary);
+            padding: 60px;
+            border-radius: 30px;
+            text-align: center;
+            max-width: 600px;
+            margin: 60px auto;
+        }
+
+        .old-price {
+            text-decoration: line-through;
+            opacity: 0.5;
+            font-size: 1.25rem;
+        }
+
+        .new-price {
+            font-family: 'Outfit';
+            font-size: 4rem;
+            color: #fff;
+            margin: 10px 0;
+        }
+
+        .guarantee {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        footer {
+            padding: 40px 0;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-dim);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3rem; }
+            .section-title { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <div class="container">
+            <h1>DOMINE A INTELIGÊNCIA ARTIFICIAL NA <span>ADVOCACIA REAL.</span></h1>
+            <p>O workflow de elite para transformar o Claude e o Obsidian em seus aliados estratégicos. Sem juridiquês, sem vazar dados e 100% focado em resultados técnicos.</p>
+            
+            <a href="#comprar" class="cta-button">Quero Desjuridicar meu Workflow Agora</a>
+            
+            <div style="margin-top: 80px;">
+                <img src="hero_masterclass_desjuridicando_ia_1776886532574.png" alt="Desjuridicando IA Hero" class="hero-image">
+            </div>
+        </div>
+    </header>
+
+    <section class="pain-section">
+        <div class="container">
+            <h2 class="section-title">O Fim da Advocacia Braçal</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Petições Lentas</h3>
+                    <p>O prazo bate à porta e você ainda está preso na estrutura básica, perdendo horas em redação repetitiva.</p>
+                </div>
+                <div class="card">
+                    <h3>Medo do Vazamento</h3>
+                    <p>Você quer usar IA, mas tem pavor de colocar dados sensíveis de clientes em um prompt público.</p>
+                </div>
+                <div class="card">
+                    <h3>Gurus da Teoria</h3>
+                    <p>Cursos de 40 horas que ensinam tudo, menos como resolver um agravo de instrumento em 5 minutos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="modules-section">
+        <div class="container">
+            <h2 class="section-title">O Que Você Vai Dominar</h2>
+            <div class="module-list">
+                <div class="module-item">
+                    <div>
+                        <h3>Bloco 1: O Cérebro Híbrido</h3>
+                        <p>Por que o Claude 3.5 é superior para o Direito e como integrá-lo ao seu pensamento jurídico estratégico.</p>
+                    </div>
+                </div>
+                <div class="module-item">
+                    <div>
+                        <h3>Bloco 2: Workflow Seguro & LGPD</h3>
+                        <p>A técnica da máscara: como sanitizar casos reais e usar fundamentação robusta sem alucinação da IA.</p>
+                    </div>
+                </div>
+                <div class="module-item">
+                    <div>
+                        <h3>Bloco 3: Segundo Cérebro Jurídico</h3>
+                        <p>Como organizar seu vault jurídico para que todo caso pesquisado se torne um ativo eterno para o seu escritório.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="comprar" class="pricing-section">
+        <div class="container">
+            <div class="pricing-box">
+                <h3>Oferta de Lançamento</h3>
+                <p class="old-price">De R$ 497,00 por apenas</p>
+                <div class="new-price">R$ 97,00</div>
+                <p>ou 12x de R$ 9,68</p>
+                <br>
+                <a href="#" class="cta-button">Reservar minha Vaga</a>
+                <p class="guarantee">🛡️ Garantia de 7 dias ou seu dinheiro de volta</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Prof. Edu Simão. Todos os direitos reservados.</p>
+            <p>Este produto não garante resultados financeiros. O sucesso depende da aplicação prática e dedicação.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
